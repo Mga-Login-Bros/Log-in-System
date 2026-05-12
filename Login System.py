@@ -23,6 +23,16 @@ def register():
     messagebox.showinfo("Success", "Account saved successfully!")
     entry_login_user.delete(0, END)
     entry_login_pass.delete(0, END)
+
+
+button_login = Button(root, text="Login", command=login)
+button_login.pack(pady=10)
+
+button_register = Button(root, text="Register", command=register)
+button_register.pack(pady=5)
+
+root.mainloop()
+
     
 root = Tk()
 root.title("=== Login System ===")
