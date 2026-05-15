@@ -63,6 +63,9 @@ root.geometry("500x300")
 char_count = Label(root, text="Password length: 0", font=("Segoe UI", 8), fg="gray")
 char_count.pack()
 
+label_title = Label(root, text="🔐 Login System", font=("Segoe UI", 16, "bold"), fg="#333")
+label_title.pack(pady=(15, 5))
+
 label_login_user = Label(root, text="Username:")
 label_login_user.pack(pady=5)
 entry_login_user = Entry(root)
