@@ -89,4 +89,8 @@ button_register.pack(pady=5)
 
 btn_clear = Button(root, text="Clear", command=lambda: [entry_login_user.delete(0, END), entry_login_pass.delete(0, END)])
 btn_clear.pack(pady=5)
+
+status_bar = Label(root, text="Ready", font=("Segoe UI", 8), fg="gray", anchor="w", relief="sunken")
+status_bar.pack(fill="x", side="bottom", ipady=2)
+
 root.mainloop()
