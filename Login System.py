@@ -60,6 +60,9 @@ root = Tk()
 root.title("Login System")
 root.geometry("500x300")
 
+char_count = Label(root, text="Password length: 0", font=("Segoe UI", 8), fg="gray")
+char_count.pack()
+
 label_login_user = Label(root, text="Username:")
 label_login_user.pack(pady=5)
 entry_login_user = Entry(root)
@@ -68,6 +71,12 @@ entry_login_user.pack(pady=5)
 label_login_pass = Label(root, text="Password:")
 label_login_pass.pack(pady=5)
 entry_login_pass = Entry(root, show="*")
+
+def update_count(*args):
+    count = len(entry_login_pass.get())
+    char_count.config(text=f"Password length: {count}")
+
+entry_login_pass.bind("<KeyRelease>", update_count)
 entry_login_pass.pack(pady=5)
 
 btn_toggle = Button(root, text='👁', command=toggle_password)
@@ -78,4 +87,6 @@ button_login.pack(pady=10)
 button_register = Button(root, text="Register", command=register)
 button_register.pack(pady=5)
 
+btn_clear = Button(root, text="Clear", command=lambda: [entry_login_user.delete(0, END), entry_login_pass.delete(0, END)])
+btn_clear.pack(pady=5)
 root.mainloop()
