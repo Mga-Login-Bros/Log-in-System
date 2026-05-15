@@ -1,5 +1,6 @@
 from tkinter import *
-from tkinter import messagebox 
+from tkinter import messagebox
+
 
 def login():
     username = entry_login_user.get()
@@ -8,6 +9,23 @@ def login():
     if not username.strip() or not password.strip():
         messagebox.showerror("Error", "Please enter both username and password.")
         return
+
+    try:
+        with open("Credentials.txt", "r") as f:
+            accounts = f.readlines()
+
+        for account in accounts:
+            saved_user, saved_pass = account.strip().split(",")
+
+            if username == saved_user and password == saved_pass:
+                messagebox.showinfo("Login Sucess", "Welcome")
+                return
+
+        messagebox.showerror("Login Failed", "Incorrect Username or Password.")
+
+    except FileNotFoundError:
+        messagebox.showerror("Error", "No Accounts found.")
+
 
 def register():
     username = entry_login_user.get()
@@ -20,6 +38,7 @@ def register():
     messagebox.showinfo("Success", "Account saved successfully!")
     entry_login_user.delete(0, END)
     entry_login_pass.delete(0, END)
+
 
 root = Tk()
 root.title("=== Login System ===")
