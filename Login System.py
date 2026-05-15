@@ -48,7 +48,14 @@ def register():
     entry_login_user.delete(0, END)
     entry_login_pass.delete(0, END)
 
-
+def toggle_password():
+    if entry_login_pass.cget('show') == '*':
+        entry_login_pass.config(show='')
+        btn_toggle.config(text='🙈')
+    else:
+        entry_login_pass.config(show='*')
+        btn_toggle.config(text='👁')
+        
 root = Tk()
 root.title("Login System")
 root.geometry("500x300")
@@ -62,6 +69,9 @@ label_login_pass = Label(root, text="Password:")
 label_login_pass.pack(pady=5)
 entry_login_pass = Entry(root, show="*")
 entry_login_pass.pack(pady=5)
+
+btn_toggle = Button(root, text='👁', command=toggle_password)
+btn_toggle.pack(pady=5)
 
 button_login = Button(root, text="Login", command=login)
 button_login.pack(pady=10)
