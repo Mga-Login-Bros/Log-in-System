@@ -55,7 +55,7 @@ def toggle_password():
     else:
         entry_login_pass.config(show='*')
         btn_toggle.config(text='👁')
-        
+    
 root = Tk()
 root.title("Login System")
 root.geometry("500x300")
